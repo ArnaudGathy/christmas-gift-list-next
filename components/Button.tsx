@@ -31,7 +31,7 @@ export default function Button({
         },
       )}
       type={type}
-      onClick={onClick}
+      onPointerDown={onClick}
       {...rest}
     >
       {children}

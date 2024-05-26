@@ -35,7 +35,7 @@ const BackButton = ({
     return (
       <div
         className={classes}
-        onClick={() =>
+        onPointerDown={() =>
           setStep((previousStep) => {
             if (step === 4 && link === "") {
               return 2;
