@@ -2,8 +2,8 @@ import "@/app/globals.css";
 import Image from "next/image";
 import TabBar from "@/components/TabBar";
 import PageHeading from "@/components/PageHeading";
-import { inter } from "@/constants/fonts";
-import background from "../public/background.svg";
+import { inter } from "@/lib/constants/fonts";
+import background from "@/public/background.svg";
 
 export default function RootLayout({
   children,
@@ -16,7 +16,7 @@ export default function RootLayout({
         <title>Liste de cadeaux de Noël</title>
       </head>
       <body
-        className={`${inter.className} relative bg-green-100 text-red-500 h-svh flex flex-col`}
+        className={`${inter.className} bg-green-100 text-white p-0 m-0 flex justify-center`}
       >
         <Image
           className="z-[-1]"
@@ -28,11 +28,13 @@ export default function RootLayout({
             objectFit: "cover",
           }}
         />
-        <PageHeading />
-        <div className="relative overflow-scroll flex flex-1 p-4">
-          {children}
-        </div>
-        <TabBar />
+        <main className="relative h-svh flex flex-col max-w-[800px] flex-1">
+          <PageHeading />
+          <div className="relative overflow-auto flex flex-1 p-4">
+            {children}
+          </div>
+          <TabBar />
+        </main>
       </body>
     </html>
   );

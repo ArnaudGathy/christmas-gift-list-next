@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
-import { menuItems } from "@/constants/routes";
+import { menuItems } from "@/lib/constants/routes";
 
 export default function TabBar() {
   const pathname = usePathname();
 
   return (
-    <div className="bg-black/25 w-full bottom-0 flex justify-around gap-4 p-2">
+    <div className="bg-black/50 w-full bottom-0 flex justify-around gap-4 p-2">
       {menuItems.map(({ tabName, href, icon: Icon }) =>
         Icon && tabName ? (
           <Link href={href} key={href}>

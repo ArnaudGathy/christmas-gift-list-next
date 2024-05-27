@@ -1,12 +1,6 @@
-import { ReactNode } from "react";
 import { clsx } from "clsx";
 
-type ButtonProps = {
-  type?: HTMLButtonElement["type"];
-  disabled?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  children: ReactNode;
-  className?: string;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   secondary?: boolean;
 };
 
@@ -15,7 +9,6 @@ export default function Button({
   className,
   onClick,
   secondary = false,
-  type = "button",
   ...rest
 }: ButtonProps) {
   return (
@@ -27,10 +20,9 @@ export default function Button({
         {
           "active:scale-90 transition-transform": !rest.disabled,
           "bg-white text-black/75": secondary,
-          "bg-red-500 text-white disabled:bg-neutral-400": !secondary,
+          "bg-red-500 disabled:bg-neutral-400": !secondary,
         },
       )}
-      type={type}
       onPointerDown={onClick}
       {...rest}
     >

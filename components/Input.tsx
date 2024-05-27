@@ -1,46 +1,31 @@
-import { clsx } from "clsx";
-import { useState } from "react";
+import { ReactNode } from "react";
 
-type InputProps = {
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: HTMLInputElement["type"];
-  className?: string;
-  placeholder?: string;
-  error?: string;
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  children?: ReactNode;
 };
 
 export default function Input({
-  value,
   onChange,
-  type = "text",
   className,
-  placeholder,
-  error,
+  children,
+  id,
+  ...rest
 }: InputProps) {
-  const [isTouched, setIsTouched] = useState(false);
-  const hasError = isTouched && !!error;
-
   return (
-    <div>
+    <>
+      {children && (
+        <label htmlFor={id} className="text-center text-xl">
+          {children}
+        </label>
+      )}
       <input
-        value={value}
-        onChange={(event) => {
-          onChange(event);
-          if (!isTouched) {
-            setIsTouched(true);
-          }
-        }}
-        type={type}
-        className={clsx(
-          `${className} text-center text-black h-10 rounded placeholder:text-black/25 w-full mt-10`,
-          { "boder-solid border-2 border-red-500": hasError },
-        )}
-        placeholder={placeholder}
+        onChange={onChange}
+        className={`${className}  w-full h-10 rounded
+      focus:border-2 focus:border-red-500 focus:outline-none
+      text-center text-black placeholder:text-black/25`}
+        id={id}
+        {...rest}
       />
-      <div className="text-center text-white min-h-10">
-        {hasError ? error : ""}
-      </div>
-    </div>
+    </>
   );
 }

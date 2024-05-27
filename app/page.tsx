@@ -1,4 +1,4 @@
-import { routes } from "@/constants/routes";
+import { routes } from "@/lib/constants/routes";
 import Link from "next/link";
 import Button from "@/components/Button";
 
