@@ -4,16 +4,7 @@ import Link from "next/link";
 import { routes } from "@/lib/constants/routes";
 import Input from "@/components/Input";
 import { addGift } from "@/lib/actions/gifts";
-import { mountainsOfChristmas } from "@/lib/constants/fonts";
-import { ReactNode } from "react";
-
-const Highlight = ({ children }: { children: ReactNode }) => (
-  <span
-    className={`${mountainsOfChristmas.className} text-2xl text-red-500 font-semibold align-middle`}
-  >
-    {children}
-  </span>
-);
+import Highlight from "@/components/Highlight";
 
 export default function Add() {
   return (
@@ -36,7 +27,7 @@ export default function Add() {
         <select
           id="target"
           name="target"
-          className={`text-center text-black h-10 bg-white rounded focus:border-2 focus:border-red-500 focus:outline-none`}
+          className={`text-center text-black h-10 bg-white rounded-lg focus:border-2 focus:border-red-500 focus:outline-none`}
           required
         >
           <option value="1">Moi</option>

@@ -1,65 +1,138 @@
+import Highlight from "@/components/Highlight";
+import {
+  ChevronRightIcon,
+  ArrowTopRightOnSquareIcon,
+  CheckIcon,
+} from "@heroicons/react/16/solid";
+import { clsx } from "clsx";
+import ClaimItem from "@/components/add/ClaimItem";
+
+const items = {
+  Arnaud: [
+    { name: "Ours en peluche chaleureux" },
+    {
+      name: "Matériel de camping de plein air",
+      link: "https://www.google.be",
+      addedBy: "Michael",
+      selectedBy: "Arnaud",
+    },
+  ],
+  Magaly: [
+    {
+      name: "Écharpe cashmère confortable",
+      addedBy: "Jean",
+      link: "https://www.google.be",
+    },
+    {
+      name: "conformateur d'archéologie en plastique ou bambou (surtout pas métal) et qui fasse pas 2cm de haut (mes objets font en moyenne 1 à 2mm d'épaisseur)",
+      addedBy: "Ingrid",
+      link: "https://www.google.be",
+    },
+    {
+      name: "conformateur d'archéologie en plastique ou bambou (surtout pas métal) et qui fasse pas 2cm de haut (mes objets font en moyenne 1 à 2mm d'épaisseur)",
+      addedBy: "Ingrid",
+      selectedBy: "Ingrid",
+    },
+    { name: "Kit de cuisine gourmande" },
+    {
+      name: "Ours en peluche chaleureux",
+      addedBy: "Isabella",
+      selectedBy: "Manon",
+    },
+    {
+      name: "Écharpe cashmère confortable",
+      selectedBy: "Anaëlle",
+      link: "https://www.google.be",
+    },
+    {
+      name: "housse pour Kindle Paperwhite écran 6,8 pouces",
+      selectedBy: "Magaly",
+    },
+    { name: "Des foulards pour renouveler mon stock" },
+  ],
+  Papa: [
+    {
+      name: "Ours en peluche chaleureux",
+      addedBy: "Isabella",
+      link: "https://www.google.be",
+    },
+    {
+      name: "Matériel de camping de plein air",
+      addedBy: "Michael",
+      selectedBy: "Test",
+    },
+  ],
+  Maman: [
+    {
+      name: "Écharpe cashmère confortable",
+      addedBy: "Jean",
+      selectedBy: "Test",
+      link: "https://www.google.be",
+    },
+    { name: "Kit de soins de spa de luxe", addedBy: "Emily" },
+    { name: "Kit de cuisine gourmande", addedBy: "Sarah" },
+  ],
+};
+
 export default function Home() {
+  // TODO get user
+  const me = "Arnaud";
+
+  // TODO list filters
+
   return (
-    <div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad cum
-        eligendi ipsum necessitatibus neque nobis, recusandae voluptatum. Cumque
-        eius incidunt laboriosam maxime minima nemo odit placeat quis soluta,
-        tempore!
-      </div>
-      <div>
-        Aliquam at deleniti iure libero minima necessitatibus officiis
-        perferendis porro ratione tempora. Aut culpa impedit laboriosam quidem
-        sint! Alias asperiores blanditiis cumque ducimus eius facilis in officia
-        perspiciatis totam, voluptates!
-      </div>
-      <div>
-        Beatae debitis delectus dolores, enim est harum iste, iusto, laboriosam
-        nulla qui quidem quis recusandae suscipit unde veniam. Consequatur dolor
-        id laboriosam. Eum fugiat fugit nesciunt repellat sequi, vero
-        voluptates.
-      </div>
-      <div>
-        Deleniti, distinctio dolor ea exercitationem libero magnam mollitia
-        necessitatibus perspiciatis quibusdam recusandae! Adipisci doloribus et
-        explicabo incidunt, iusto necessitatibus officiis provident quae quidem,
-        quo sunt totam ullam veritatis voluptates voluptatibus?
-      </div>
-      <div>
-        Alias consectetur culpa dignissimos ducimus incidunt iusto labore quam
-        quas sit vitae. Adipisci amet dicta dolore dolores eligendi eum fugit id
-        laudantium neque nihil odio rerum saepe, suscipit temporibus voluptatum.
-      </div>
-      <div>
-        A accusantium, dolor, dolorum explicabo hic illum impedit molestiae
-        molestias officiis perferendis qui rem tenetur vel? Eius esse eveniet
-        facilis fuga itaque, iusto numquam odio optio quibusdam, quo, sunt
-        tempore.
-      </div>
-      <div>
-        A animi aspernatur at beatae consectetur corporis culpa cum dolorem
-        eaque earum ex fuga illo impedit ipsam minima, nemo nisi odit omnis
-        perspiciatis praesentium provident sapiente sequi similique ullam
-        voluptas!
-      </div>
-      <div>
-        Accusamus, blanditiis enim id ipsum laudantium minus natus nihil nobis
-        praesentium quas, quibusdam reprehenderit vel velit voluptate
-        voluptatibus! Animi aut consequuntur exercitationem facilis illum modi
-        nihil non officia ullam voluptas!
-      </div>
-      <div>
-        Adipisci alias animi beatae corporis cum debitis deserunt distinctio,
-        doloremque eum harum hic modi nulla praesentium quasi quis repellendus
-        sint tempore? Deleniti error est illo ipsam iste laborum quia
-        voluptates?
-      </div>
-      <div>
-        Corporis eveniet excepturi ipsam laboriosam minus quasi quidem sapiente
-        sint voluptas. Accusantium atque aut, consequatur eos et eum iure odio
-        placeat qui repellat? Accusantium assumenda laboriosam laborum quo quos
-        reprehenderit!
-      </div>
+    <div className="flex flex-col flex-1 gap-6 w-full">
+      {Object.entries(items).map(([target, items]) => (
+        <div key={target} className="bg-red-500/80 rounded-lg shadow-lg">
+          <div className="px-4 py-2 border-b border-b-white/30">
+            <h2 className="text-lg font-semibold">
+              Pour <Highlight secondary>{target}</Highlight>
+            </h2>
+          </div>
+          <div className="px-2 py-2 space-y-2">
+            {items.map(({ name, addedBy, selectedBy, link }) => (
+              <div key={name} className="flex justify-between gap-2">
+                <div>
+                  <span
+                    className={clsx("font-medium flex gap-2", {
+                      "line-through text-green-500": !!selectedBy,
+                      "text-ice": !!link,
+                    })}
+                  >
+                    <div className="min-w-5">
+                      {!!selectedBy ? (
+                        <CheckIcon className="size-5 text-green-400" />
+                      ) : !!link ? (
+                        <ArrowTopRightOnSquareIcon className="size-5 text-ice" />
+                      ) : (
+                        <ChevronRightIcon className="size-5" />
+                      )}
+                    </div>
+                    {link ? (
+                      <a href={link} target="_blank" rel="noreferrer">
+                        {name}
+                      </a>
+                    ) : (
+                      name
+                    )}
+                  </span>
+                  <p className="text-xs text-white/60 min-h-5 pl-7">
+                    {selectedBy && <>Choisi par : {selectedBy}</>}
+                    {!selectedBy && addedBy && <>Ajouté par : {addedBy}</>}
+                  </p>
+                </div>
+                <div className="min-w-8">
+                  {selectedBy === me ? (
+                    <ClaimItem id={1} cancel />
+                  ) : !selectedBy ? (
+                    <ClaimItem id={1} />
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

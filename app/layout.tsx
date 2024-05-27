@@ -21,7 +21,7 @@ export default function RootLayout({
         <Image
           className="z-[-1]"
           src={background}
-          alt="Forêt de sapin"
+          alt="Forêt de sapins"
           fill
           sizes="100vw"
           style={{
@@ -30,7 +30,7 @@ export default function RootLayout({
         />
         <main className="relative h-svh flex flex-col max-w-[800px] flex-1">
           <PageHeading />
-          <div className="relative overflow-auto flex flex-1 p-4">
+          <div className="relative overflow-auto flex flex-1 px-4">
             {children}
           </div>
           <TabBar />

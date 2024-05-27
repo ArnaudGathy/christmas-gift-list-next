@@ -1,5 +1,7 @@
 import { clsx } from "clsx";
 
+export const buttonAnimationClasses = "active:scale-90 transition-transform";
+
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   secondary?: boolean;
 };
@@ -15,10 +17,10 @@ export default function Button({
     <button
       className={clsx(
         `${className ?? ""}
-        text-sm text-center rounded p-2 mt-0 w-full
+        text-sm text-center rounded-lg p-2 mt-0 w-full
         `,
         {
-          "active:scale-90 transition-transform": !rest.disabled,
+          buttonAnimationClasses: !rest.disabled,
           "bg-white text-black/75": secondary,
           "bg-red-500 disabled:bg-neutral-400": !secondary,
         },

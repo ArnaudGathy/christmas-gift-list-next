@@ -16,7 +16,7 @@ export const routes: Record<string, Route> = {
     heading: "Ma liste de souhaits",
     tabName: "Ma liste",
     href: "/",
-    icon: ShoppingCartIcon,
+    icon: GiftIcon,
   },
   lists: {
     heading: "Listes des autres",
@@ -32,7 +32,7 @@ export const routes: Record<string, Route> = {
     heading: "Mes cadeaux à offrir",
     tabName: "Cadeaux",
     href: "/gifts",
-    icon: GiftIcon,
+    icon: ShoppingCartIcon,
   },
 };
 
