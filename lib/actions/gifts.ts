@@ -11,3 +11,7 @@ export async function claimGift(id: number) {
 export async function unClaimGift(id: number) {
   console.log("UN claim gift id", id);
 }
+
+export async function removeGift(id: number) {
+  console.log("delete", id);
+}
