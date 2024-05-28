@@ -15,7 +15,7 @@ export default function Highlight({
         `${mountainsOfChristmas.className} text-2xl font-semibold align-middle`,
         {
           "text-green-600": secondary,
-          "text-red-500": !secondary,
+          "text-red-600": !secondary,
         },
       )}
     >

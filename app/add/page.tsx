@@ -14,7 +14,7 @@ export default function Add() {
     >
       <Link
         href={routes.home.href}
-        className="absolute top-0 flex gap-2 items-center text-sm text-red-500 font-light"
+        className="absolute top-0 flex gap-2 items-center text-sm text-red-600 font-light"
       >
         <ArrowLeftIcon className="size-5" />
         <span>Retour à ma liste</span>
@@ -27,7 +27,7 @@ export default function Add() {
         <select
           id="target"
           name="target"
-          className={`text-center text-black h-10 bg-white rounded-lg focus:border-2 focus:border-red-500 focus:outline-none`}
+          className={`text-center text-black h-10 bg-white rounded-lg focus:border-2 focus:border-red-600 focus:outline-none`}
           required
         >
           <option value="1">Moi</option>

@@ -16,7 +16,7 @@ export default function RootLayout({
         <title>Liste de cadeaux de Noël</title>
       </head>
       <body
-        className={`${inter.className} bg-green-100 text-white p-0 m-0 flex justify-center`}
+        className={`${inter.className} relative md:flex md:justify-center bg-green-100 text-white p-0 m-0`}
       >
         <Image
           className="z-[-1]"
@@ -28,7 +28,7 @@ export default function RootLayout({
             objectFit: "cover",
           }}
         />
-        <main className="relative h-svh flex flex-col max-w-[800px] flex-1">
+        <main className="h-svh flex flex-col h max-w-[800px] flex-1">
           <PageHeading />
           <div className="relative overflow-auto flex flex-1 px-4">
             {children}

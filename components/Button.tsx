@@ -22,7 +22,7 @@ export default function Button({
         {
           buttonAnimationClasses: !rest.disabled,
           "bg-white text-black/75": secondary,
-          "bg-red-500 disabled:bg-neutral-400": !secondary,
+          "bg-red-600 disabled:bg-neutral-400": !secondary,
         },
       )}
       onPointerDown={onClick}

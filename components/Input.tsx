@@ -21,7 +21,7 @@ export default function Input({
       <input
         onChange={onChange}
         className={`${className}  w-full h-10 rounded-lg
-      focus:border-2 focus:border-red-500 focus:outline-none
+      focus:border-2 focus:border-red-600 focus:outline-none
       text-center text-black placeholder:text-black/25`}
         id={id}
         {...rest}
