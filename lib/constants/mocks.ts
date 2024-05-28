@@ -1,4 +1,6 @@
-export const items = [
+import { Item } from "@/lib/constants/types";
+
+export const items: Item[] = [
   {
     name: "Écharpe cashmire confortable",
     addedBy: "Maman",
@@ -20,7 +22,7 @@ export const items = [
   },
 ];
 
-export const personnalItems = [
+export const personnalItems: Item[] = [
   {
     name: "Ours en peluche chaleureux",
     link: "https://www.google.be",
@@ -39,7 +41,7 @@ export const personnalItems = [
   },
 ];
 
-export const otherPersonnalItems = [
+export const otherPersonnalItems: Item[] = [
   {
     name: "housse pour Kindle Paperwhite écran 6,8 pouces",
     addedBy: "Arnaud",
@@ -55,7 +57,7 @@ export const otherPersonnalItems = [
   },
 ];
 
-export const itemsByTarget = {
+export const itemsByTarget: Record<string, Item[]> = {
   Arnaud: personnalItems,
   Magaly: [
     {
@@ -87,7 +89,7 @@ export const itemsByTarget = {
     ...otherPersonnalItems,
   ],
   Papa: [
-    { name: "Ours en peluche chaleureux" },
+    { name: "Ours en peluche chaleureux", owner: "Papa" },
     {
       name: "Matériel de camping de plein air",
       link: "https://www.google.be",
