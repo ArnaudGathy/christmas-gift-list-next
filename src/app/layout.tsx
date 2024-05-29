@@ -3,7 +3,7 @@ import Image from "next/image";
 import TabBar from "@/components/TabBar";
 import PageHeading from "@/components/PageHeading";
 import { inter } from "@/lib/constants/fonts";
-import background from "@/public/background.svg";
+import background from "../../public/background.svg";
 
 export default function RootLayout({
   children,

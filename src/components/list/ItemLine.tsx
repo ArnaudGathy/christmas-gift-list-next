@@ -4,7 +4,7 @@ import {
   CheckIcon,
 } from "@heroicons/react/16/solid";
 import Image from "next/image";
-import bullet from "@/public/bullet.svg";
+import bullet from "../../../public/bullet.svg";
 import ClaimItem from "@/components/list/ClaimItem";
 import { Item } from "@/lib/constants/types";
 

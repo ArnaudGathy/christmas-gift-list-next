@@ -1,17 +1,18 @@
+/* eslint-disable */
 "use server";
 
 export async function addGift(formData: FormData) {
-  console.log("formData", formData);
+  // TODO
 }
 
 export async function claimGift(id: number) {
-  console.log("claim gift id", id);
+  // TODO
 }
 
 export async function unClaimGift(id: number) {
-  console.log("UN claim gift id", id);
+  // TODO
 }
 
 export async function removeGift(id: number) {
-  console.log("delete", id);
+  // TODO
 }

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { routes } from "@/lib/constants/routes";
 import { mountainsOfChristmas } from "@/lib/constants/fonts";
-import snowflake from "@/public/snowflake.svg";
+import snowflake from "../../public/snowflake.svg";
 
 export default function PageHeading() {
   const pathname = usePathname();
