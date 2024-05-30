@@ -32,7 +32,7 @@ export default function ClaimItem({
       <button
         name="claim"
         type="submit"
-        className={`${buttonAnimationClasses} flex items-start h-full w-full`}
+        className={`${buttonAnimationClasses} flex h-full w-full items-start`}
       >
         {isCancel || isRemove ? (
           <XMarkIcon className="size-6" />

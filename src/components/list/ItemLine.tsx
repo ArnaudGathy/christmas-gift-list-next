@@ -27,16 +27,16 @@ export default function ItemLine({
     <div className="flex justify-between gap-2">
       <div>
         <span
-          className={clsx("font-medium flex gap-1", {
-            "line-through text-green-500": isSelected,
+          className={clsx("flex gap-1 font-medium", {
+            "text-green-500 line-through": isSelected,
           })}
         >
-          <div className="min-w-5 flex justify-center">
+          <div className="flex min-w-5 justify-center">
             {isSelected ? (
               <CheckIcon className="size-5 text-green-400" />
             ) : (
               <Image
-                className="h-3 mt-1"
+                className="mt-1 h-3"
                 alt="bullet"
                 width="12"
                 height="12"
@@ -46,14 +46,14 @@ export default function ItemLine({
           </div>
           {link ? (
             <a href={link} target="_blank" rel="noreferrer">
-              <ArrowTopRightOnSquareIcon className="size-5 inline mr-1 mb-1" />
+              <ArrowTopRightOnSquareIcon className="mb-1 mr-1 inline size-5" />
               <span>{name}</span>
             </a>
           ) : (
             name
           )}
         </span>
-        <p className="text-xs text-white/60 min-h-5 pl-6">
+        <p className="min-h-5 pl-6 text-xs text-white/60">
           {isSelected && <>Choisi par : {selectedBy}</>}
           {!isSelected && !isPersonnal && !forOthers && addedBy && (
             <>Ajouté par : {addedBy}</>

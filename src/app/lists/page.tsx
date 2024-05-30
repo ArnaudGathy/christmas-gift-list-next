@@ -13,7 +13,7 @@ export default function Home() {
   // One person's list only
 
   return (
-    <div className="flex flex-col flex-1 gap-4 mb-4">
+    <div className="mb-4 flex flex-1 flex-col gap-4">
       <Filters />
       {Object.entries(itemsByTarget).map(([target, items]) => (
         <List

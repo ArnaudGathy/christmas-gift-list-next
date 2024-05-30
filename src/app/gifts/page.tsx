@@ -5,7 +5,7 @@ export default function Home() {
   // TODO get list of item selectedBy current user, orderBy name
 
   return (
-    <div className="flex-1 my-4">
+    <div className="my-4 flex-1">
       <List forOthers items={items} currentUser="Arnaud" target="offrir" />
     </div>
   );

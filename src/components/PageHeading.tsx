@@ -15,8 +15,8 @@ export default function PageHeading() {
   return (
     <div
       className={`
-      ${mountainsOfChristmas.className} antialiased text-red-600 font-semibold text-3xl
-       p-4 flex gap-2 items-center`}
+      ${mountainsOfChristmas.className} flex items-center gap-2 p-4
+       text-3xl font-semibold text-red-600 antialiased`}
     >
       <Image src={snowflake} height={24} width={24} alt="Flocon de neige" />
       <span>{currentPage?.heading ?? "On s'est perdu ?"}</span>

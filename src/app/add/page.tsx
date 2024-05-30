@@ -8,16 +8,16 @@ import Highlight from "@/components/Highlight";
 
 export default function Add() {
   return (
-    <form action={addGift} className="h-full flex flex-col flex-1">
+    <form action={addGift} className="flex h-full flex-1 flex-col">
       <Link
         href={routes.home.href}
-        className="absolute top-0 flex gap-2 items-center text-sm text-red-600 font-light"
+        className="absolute top-0 flex items-center gap-2 text-sm font-light text-red-600"
       >
         <ArrowLeftIcon className="size-5" />
         <span>Retour à ma liste</span>
       </Link>
 
-      <div className="flex flex-col flex-1 justify-center gap-8">
+      <div className="flex flex-1 flex-col justify-center gap-8">
         <div className="flex flex-col gap-2">
           <label htmlFor="target" className="text-center text-xl">
             Ajouter pour <Highlight>QUI</Highlight> ?
@@ -25,7 +25,7 @@ export default function Add() {
           <select
             id="target"
             name="target"
-            className={`text-center text-black h-10 bg-white rounded-lg focus:border-2 focus:border-red-600 focus:outline-none`}
+            className={`h-10 rounded-lg bg-white text-center text-black focus:border-2 focus:border-red-600 focus:outline-none`}
             required
           >
             <option value="1">Moi</option>

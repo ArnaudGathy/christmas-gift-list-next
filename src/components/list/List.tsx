@@ -18,15 +18,15 @@ export default function List({
   items: Item[];
 }) {
   return (
-    <div className="bg-red-600/90 rounded-lg shadow-lg">
+    <div className="rounded-lg bg-red-600/90 shadow-lg">
       {target && (
-        <div className="px-4 py-2 border-b border-b-white/30">
+        <div className="border-b border-b-white/30 px-4 py-2">
           <h2 className="text-lg font-semibold">
             Pour <Highlight secondary>{target}</Highlight>
           </h2>
         </div>
       )}
-      <div className="px-2 py-2 space-y-2">
+      <div className="space-y-2 px-2 py-2">
         {items.map((item) => (
           <ItemLine
             forOthers={forOthers}

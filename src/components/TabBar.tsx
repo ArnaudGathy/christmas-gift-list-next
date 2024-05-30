@@ -9,13 +9,13 @@ export default function TabBar() {
   const pathname = usePathname();
 
   return (
-    <div className="bg-black/50 w-full flex justify-around gap-4 p-2">
+    <div className="flex w-full justify-around gap-4 bg-black/50 p-2">
       {menuItems.map(({ tabName, href, icon: Icon }) =>
         Icon && tabName ? (
           <Link href={href} key={href}>
             <div
               className={clsx(
-                "flex flex-col items-center active:scale-90 transform transition-transform",
+                "flex transform flex-col items-center transition-transform active:scale-90",
                 {
                   "text-green-600": pathname !== href,
                   "text-sky-300": pathname === href,

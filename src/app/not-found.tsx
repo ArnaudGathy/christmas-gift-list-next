@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function notFound() {
   return (
-    <div className="h-full flex flex-col flex-1 py-4 justify-between">
-      <div className="flex flex-col justify-center flex-1">
-        <div className="flex gap-4 items-center p-4 bg-red-600/90 rounded-lg shadow-lg">
+    <div className="flex h-full flex-1 flex-col justify-between py-4">
+      <div className="flex flex-1 flex-col justify-center">
+        <div className="flex items-center gap-4 rounded-lg bg-red-600/90 p-4 shadow-lg">
           <QuestionMarkCircleIcon className="size-12" />
           <span className="text-xl">{`Cette page n'existe pas.`}</span>
         </div>
