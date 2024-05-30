@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="flex-1 my-4">
-      <List items={items} currentUser="Arnaud" target="offrir" />
+      <List forOthers items={items} currentUser="Arnaud" target="offrir" />
     </div>
   );
 }

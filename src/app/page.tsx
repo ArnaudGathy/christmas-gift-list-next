@@ -8,23 +8,45 @@ export default function Home() {
   // TODO get personnal items, exclude items added by other users, orderBy name
 
   return (
-    <div className="flex flex-col gap-6 flex-1 my-4">
-      <List
-        isPersonnal
-        items={personnalItems}
-        target="moi"
-        currentUser="Arnaud"
-      />
+    <div className="h-full flex flex-col flex-1 pt-4">
+      <div className="flex flex-col flex-1 gap-4">
+        <List
+          isPersonnal
+          items={personnalItems}
+          target="moi"
+          currentUser="Arnaud"
+        />
 
-      <List
-        isPersonnal
-        items={otherPersonnalItems}
-        target="les autres"
-        currentUser="Arnaud"
-      />
+        <List
+          isPersonnal
+          items={otherPersonnalItems}
+          target="les autres"
+          currentUser="Arnaud"
+        />
 
-      <Link href={routes.add.href} className="">
-        <Button secondary>Ajouter</Button>
+        {/*// TODO remove extra lists*/}
+        <List
+          isPersonnal
+          items={personnalItems}
+          target="moi"
+          currentUser="Arnaud"
+        />
+        <List
+          isPersonnal
+          items={personnalItems}
+          target="moi"
+          currentUser="Arnaud"
+        />
+        <List
+          isPersonnal
+          items={personnalItems}
+          target="moi"
+          currentUser="Arnaud"
+        />
+      </div>
+
+      <Link href={routes.add.href}>
+        <Button className="my-4">Ajouter</Button>
       </Link>
     </div>
   );

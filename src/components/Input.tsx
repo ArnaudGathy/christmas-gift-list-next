@@ -1,10 +1,13 @@
 import { ReactNode } from "react";
+import { clsx } from "clsx";
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   children?: ReactNode;
+  isSmall?: boolean;
 };
 
 export default function Input({
+  isSmall,
   onChange,
   className,
   children,
@@ -20,9 +23,12 @@ export default function Input({
       )}
       <input
         onChange={onChange}
-        className={`${className}  w-full h-10 rounded-lg
+        className={clsx(
+          `${className}  w-full h-10 rounded-lg
       focus:border-2 focus:border-red-600 focus:outline-none
-      text-center text-black placeholder:text-black/25`}
+      text-center text-black placeholder:text-black/25`,
+          { "h-10": !isSmall, "h-4": isSmall },
+        )}
         id={id}
         {...rest}
       />

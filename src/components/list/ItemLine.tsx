@@ -9,11 +9,13 @@ import ClaimItem from "@/components/list/ClaimItem";
 import { Item } from "@/lib/constants/types";
 
 export default function ItemLine({
+  forOthers = false,
   isPersonnal = false,
   isGlobal = false,
   currentUser,
   item: { name, addedBy, selectedBy, link, owner },
 }: {
+  forOthers?: boolean;
   isPersonnal?: boolean;
   currentUser: string;
   isGlobal?: boolean;
@@ -53,10 +55,12 @@ export default function ItemLine({
         </span>
         <p className="text-xs text-white/60 min-h-5 pl-6">
           {isSelected && <>Choisi par : {selectedBy}</>}
-          {!isSelected && !isPersonnal && addedBy && (
+          {!isSelected && !isPersonnal && !forOthers && addedBy && (
             <>Ajouté par : {addedBy}</>
           )}
-          {isPersonnal && owner !== currentUser && <>Pour : {owner}</>}
+          {(isPersonnal || forOthers) && owner !== currentUser && (
+            <>Pour : {owner}</>
+          )}
         </p>
       </div>
       <div className="min-w-6">

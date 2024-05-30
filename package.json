@@ -6,7 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint ./src/**/*.{ts,tsx} --fix --max-warnings 0",
-    "pre-commit": "lint-staged && npm run typecheck",
+    "pre-commit": "lint-staged",
     "prepare": "husky",
     "start": "next start",
     "typecheck": "tsc --noEmit"

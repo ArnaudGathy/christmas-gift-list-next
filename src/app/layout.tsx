@@ -28,11 +28,9 @@ export default function RootLayout({
             objectFit: "cover",
           }}
         />
-        <main className="h-svh flex flex-col h max-w-[800px] flex-1">
+        <main className="h-dvh flex flex-col h max-w-[800px] flex-1">
           <PageHeading />
-          <div className="relative overflow-auto flex flex-1 px-4">
-            {children}
-          </div>
+          <div className="relative h-dvh overflow-auto px-4">{children}</div>
           <TabBar />
         </main>
       </body>

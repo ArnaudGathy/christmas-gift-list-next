@@ -1,5 +1,6 @@
 import List from "@/components/list/List";
 import { itemsByTarget } from "@/lib/constants/mocks";
+import Filters from "@/components/list/Filters";
 
 export default function Home() {
   // TODO get all lists
@@ -12,7 +13,8 @@ export default function Home() {
   // One person's list only
 
   return (
-    <div className="flex flex-col flex-1 gap-6 mt-4">
+    <div className="flex flex-col flex-1 gap-4 mb-4">
+      <Filters />
       {Object.entries(itemsByTarget).map(([target, items]) => (
         <List
           isGlobal

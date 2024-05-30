@@ -17,7 +17,7 @@ export default function Button({
     <button
       className={clsx(
         `${className ?? ""}
-        text-sm text-center rounded-lg p-2 mt-0 w-full
+        text-sm text-center rounded-lg p-2 w-full
         `,
         {
           buttonAnimationClasses: !rest.disabled,

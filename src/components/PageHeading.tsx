@@ -12,10 +12,6 @@ export default function PageHeading() {
   const routeName = pathname.split("/")[1];
   const currentPage = routeName === "" ? routes.home : routes[routeName];
 
-  if (!currentPage) {
-    return null;
-  }
-
   return (
     <div
       className={`
@@ -23,7 +19,7 @@ export default function PageHeading() {
        p-4 flex gap-2 items-center`}
     >
       <Image src={snowflake} height={24} width={24} alt="Flocon de neige" />
-      <span>{currentPage.heading}</span>
+      <span>{currentPage?.heading ?? "On s'est perdu ?"}</span>
     </div>
   );
 }
