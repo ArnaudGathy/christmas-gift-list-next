@@ -24,9 +24,9 @@ export default function Input({
       <input
         onChange={onChange}
         className={clsx(
-          `${className}  w-full h-10 rounded-lg
-      focus:border-2 focus:border-red-600 focus:outline-none
-      text-center text-black placeholder:text-black/25`,
+          `${className ?? ""}  h-10 w-full rounded-lg
+      text-center text-black placeholder:text-black/25
+      focus:border-2 focus:border-red-600 focus:outline-none`,
           { "h-10": !isSmall, "h-4": isSmall },
         )}
         id={id}
