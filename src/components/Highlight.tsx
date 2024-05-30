@@ -16,8 +16,10 @@ export default function Highlight({
       className={clsx(
         `${mountainsOfChristmas.className} ${className ?? ""} align-middle text-2xl font-semibold`,
         {
-          "text-green-600": secondary,
-          "text-red-600": !secondary,
+          "inline-block bg-gradient-to-b from-green-600 to-green-400 bg-clip-text text-transparent":
+            secondary,
+          "inline-block bg-gradient-to-b from-red-700 to-red-400 bg-clip-text text-transparent":
+            !secondary,
         },
       )}
     >

@@ -18,7 +18,7 @@ export default function TabBar() {
                 "flex transform flex-col items-center transition-transform active:scale-90",
                 {
                   "text-green-600": pathname !== href,
-                  "text-sky-300": pathname === href,
+                  "text-green-100": pathname === href,
                 },
               )}
             >

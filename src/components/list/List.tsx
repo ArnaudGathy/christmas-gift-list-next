@@ -18,7 +18,7 @@ export default function List({
   items: Item[];
 }) {
   return (
-    <div className="rounded-lg bg-red-600/90 shadow-lg">
+    <div className="rounded-lg bg-gradient-to-r from-red-600/95 to-red-500/75 shadow-lg">
       {target && (
         <div className="border-b border-b-white/30 px-4 py-2">
           <h2 className="text-lg font-semibold">
