@@ -6,7 +6,13 @@ export default function Home() {
 
   return (
     <div className="my-4 flex-1">
-      <List forOthers items={items} currentUser="Arnaud" target="offrir" />
+      <List
+        forOthers
+        items={items}
+        currentUser="Arnaud"
+        target="offrir"
+        emptyLabel="Tu n'as pas encore selectionné de cadeaux à offrir."
+      />
     </div>
   );
 }

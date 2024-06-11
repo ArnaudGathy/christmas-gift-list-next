@@ -16,6 +16,7 @@ export default function Home() {
           items={personnalItems}
           target="moi"
           currentUser="Arnaud"
+          emptyLabel='Ajoute ton premier cadeau avec le bouton "+"'
         />
 
         <List
@@ -23,6 +24,7 @@ export default function Home() {
           items={otherPersonnalItems}
           target="les autres"
           currentUser="Arnaud"
+          emptyLabel="Tu peux aussi ajouter des cadeaux pour les autres."
         />
       </div>
 
