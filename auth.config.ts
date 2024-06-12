@@ -21,16 +21,16 @@ export const authConfig = {
     async signIn(auth) {
       return isUserAuthorized(auth);
     },
-    // async authorized({ auth, request: { nextUrl } }) {
-    //   const isAllowed = await isUserAuthorized(auth);
-    //
-    //   const shouldRedirect = ["/", "/auth/login"].includes(nextUrl.pathname);
-    //   if (isAllowed && shouldRedirect) {
-    //     return Response.redirect(new URL(routes.mylist.href, nextUrl));
-    //   }
-    //
-    //   return isAllowed;
-    // },
+    authorized({ auth, request: { nextUrl } }) {
+      const isConnected = !!auth?.user?.email;
+
+      const shouldRedirect = ["/", "/auth/login"].includes(nextUrl.pathname);
+      if (isConnected && shouldRedirect) {
+        return Response.redirect(new URL(routes.mylist.href, nextUrl));
+      }
+
+      return isConnected;
+    },
   },
   providers: [],
 } satisfies NextAuthConfig;
