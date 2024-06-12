@@ -25,11 +25,11 @@ export default function Error({
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(errorText);
-    toast.info("Text copié.");
+    toast.info("Texte copié");
   };
 
   return (
-    <div className="h-full pb-4">
+    <div className="h-full p-4">
       <div className="flex h-full flex-col gap-4">
         <div className="flex h-full flex-col rounded-lg bg-red-600/90 p-4 shadow-lg">
           <div className="mb-1 flex  items-center gap-2">

@@ -3,7 +3,6 @@ import { items } from "@/lib/constants/mocks";
 
 export default function Home() {
   // TODO get list of item selectedBy current user, orderBy name
-
   return (
     <div className="my-4 flex-1">
       <List

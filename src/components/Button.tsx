@@ -21,7 +21,7 @@ export default function Button({
         `${className ?? ""} ${buttonAnimationClasses}
         w-full p-2 text-center text-sm`,
         {
-          "bg-white text-black/75": secondary,
+          "bg-white text-green-700": secondary,
           "bg-red-600 disabled:bg-neutral-400": !secondary,
           "rounded-lg": !round,
           "rounded-full": round,

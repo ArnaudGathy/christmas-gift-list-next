@@ -1,8 +1,6 @@
 import "@/app/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import TabBar from "@/components/TabBar";
-import PageHeading from "@/components/PageHeading";
 import { inter } from "@/lib/constants/fonts";
 import background from "../../public/background.svg";
 import { Bounce, ToastContainer } from "react-toastify";
@@ -31,24 +29,22 @@ export default function RootLayout({
           }}
         />
         <main className="flex h-dvh max-w-[800px] flex-1 flex-col">
-          <PageHeading />
-          <div className="relative h-dvh overflow-auto px-4">{children}</div>
-          <TabBar />
-          <ToastContainer
-            position="bottom-center"
-            autoClose={2000}
-            closeButton={false}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce}
-          />
+          {children}
         </main>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          closeButton={false}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
       </body>
     </html>
   );

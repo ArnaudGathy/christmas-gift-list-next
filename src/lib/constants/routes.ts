@@ -12,21 +12,21 @@ type Route = {
 };
 
 export const routes: Record<string, Route> = {
-  home: {
+  mylist: {
     heading: "Ma liste de souhaits",
     tabName: "Ma liste",
-    href: "/",
+    href: "/mylist",
     icon: GiftIcon,
-  },
-  lists: {
-    heading: "Listes des autres",
-    tabName: "Demandes",
-    href: "/lists",
-    icon: ListBulletIcon,
   },
   add: {
     heading: "Ajouter un cadeau",
-    href: "/add",
+    href: "/mylist/add",
+  },
+  others: {
+    heading: "Listes des autres",
+    tabName: "Demandes",
+    href: "/others",
+    icon: ListBulletIcon,
   },
   gifts: {
     heading: "Mes cadeaux à offrir",
@@ -36,4 +36,4 @@ export const routes: Record<string, Route> = {
   },
 };
 
-export const menuItems = [routes.home, routes.lists, routes.gifts];
+export const menuItems = [routes.mylist, routes.others, routes.gifts];

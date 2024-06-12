@@ -10,7 +10,7 @@ export default function Add() {
   return (
     <form action={addGift} className="flex h-full flex-1 flex-col">
       <Link
-        href={routes.home.href}
+        href={routes.mylist.href}
         className="absolute top-0 flex items-center gap-2 text-sm font-light text-red-600"
       >
         <ArrowLeftIcon className="size-5" />
