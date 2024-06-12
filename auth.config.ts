@@ -2,13 +2,11 @@ import type { NextAuthConfig } from "next-auth";
 import { routes } from "@/lib/constants/routes";
 import { getUserByEmail } from "@/lib/queries/user";
 
-const isUserAuthorized = async (
-  auth: { user?: { email?: string | null } } | null,
-) => {
-  if (!auth?.user?.email) {
+const isUserAuthorized = async (email?: string | null) => {
+  if (!email) {
     return false;
   }
-  const user = await getUserByEmail(auth.user.email);
+  const user = await getUserByEmail(email);
   return !!user;
 };
 
@@ -19,7 +17,7 @@ export const authConfig = {
   },
   callbacks: {
     async signIn(auth) {
-      return isUserAuthorized(auth);
+      return isUserAuthorized(auth?.user?.email);
     },
     authorized({ auth, request: { nextUrl } }) {
       const isConnected = !!auth?.user?.email;

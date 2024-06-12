@@ -28,7 +28,7 @@ export default function RootLayout({
           src={background}
           alt="Forêt de sapins"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 33vw, (max-width: 1200px) 50vw, 100vw"
           style={{
             objectFit: "cover",
           }}
