@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Gift {
+  id           String  @id @default(cuid())
+  name         String
+  link         String?
+  ownedBy      User    @relation("owner", fields: [ownedById], references: [id])
+  ownedById    String
+  addedBy      User    @relation("added", fields: [addedById], references: [id])
+  addedById    String
+  selectedBy   User?    @relation("selected", fields: [selectedById], references: [id])
+  selectedById String?
+}
+
+model User {
+  id            String @id @default(cuid())
+  name          String
+  email         String @unique
+  ownedGifts    Gift[] @relation("owner")
+  addedGifts    Gift[] @relation("added")
+  selectedGifts Gift[] @relation("selected")
+}

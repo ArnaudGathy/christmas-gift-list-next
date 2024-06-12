@@ -4,8 +4,14 @@ import Button from "@/components/Button";
 import List from "@/components/list/List";
 import { otherPersonnalItems, personnalItems } from "@/lib/constants/mocks";
 import { PlusIcon } from "@heroicons/react/24/solid";
+// import prisma from "@/lib/prisma";
 
 export default function Home() {
+  // const othersGifts = await prisma.gift.findMany({
+  //   where: { ownedById: { not: "Arnaud" } },
+  //   include: { ownedBy: true },
+  // });
+  // console.log("othersGifts", othersGifts);
   // TODO get personnal items, exclude items added by other users, orderBy name
 
   return (

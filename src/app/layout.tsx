@@ -5,6 +5,14 @@ import { inter } from "@/lib/constants/fonts";
 import background from "../../public/background.svg";
 import { Bounce, ToastContainer } from "react-toastify";
 
+import Favicon from "@/app/favicon.ico";
+
+export const metadata = {
+  title: "Les cadeaux du père Gathy",
+  description: "Liste de cadeaux de Noël",
+  icons: [{ rel: "icon", url: Favicon.src }],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -12,9 +20,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <head>
-        <title>Liste de cadeaux de Noël</title>
-      </head>
       <body
         className={`${inter.className} relative m-0 bg-green-100 p-0 text-white md:flex md:justify-center`}
       >
