@@ -5,7 +5,7 @@ export const getUserByEmail = (userEmail: string) => {
     return prisma.user.findUnique({
       select: { email: true },
       where: { email: userEmail },
-      cacheStrategy: { ttl: 3600 },
+      cacheStrategy: { ttl: 3600, swr: 3600 },
     });
   }
   return { email: "arno.firefox@gmail.com" };

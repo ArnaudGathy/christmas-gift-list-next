@@ -8,9 +8,7 @@ const isUserAuthorized = async (
   if (!auth?.user?.email) {
     return false;
   }
-  console.info("auth.user.email", auth.user.email);
   const user = await getUserByEmail(auth.user.email);
-  console.info("get user by email", user);
   return !!user;
 };
 
