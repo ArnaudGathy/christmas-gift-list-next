@@ -1,20 +1,13 @@
-import List from "@/components/list/List";
-import { getMySelectedGifts } from "@/lib/queries/gift";
-import { getCurrentUserEmail } from "@/../auth";
+import MyGiftsLists from "@/app/(lists)/gifts/MyGiftsLists";
+import { Suspense } from "react";
+import ListSkeleton from "@/components/list/ListSkeleton";
 
-export default async function Home() {
-  const currentUser = await getCurrentUserEmail();
-  const mySelectedGifts = await getMySelectedGifts();
-
+export default function Home() {
   return (
     <div className="my-4 flex-1">
-      <List
-        forOthers
-        gifts={mySelectedGifts}
-        currentUser={currentUser}
-        target="offrir"
-        emptyLabel="Tu n'as pas encore selectionné de cadeaux à offrir."
-      />
+      <Suspense fallback={<ListSkeleton />}>
+        <MyGiftsLists />
+      </Suspense>
     </div>
   );
 }
