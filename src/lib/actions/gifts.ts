@@ -1,5 +1,6 @@
 /* eslint-disable */
 "use server";
+import "server-only";
 
 export async function addGift(formData: FormData) {
   // TODO

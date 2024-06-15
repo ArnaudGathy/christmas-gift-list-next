@@ -2,34 +2,38 @@ import { routes } from "@/lib/constants/routes";
 import Link from "next/link";
 import Button from "@/components/Button";
 import List from "@/components/list/List";
-import { otherPersonnalItems, personnalItems } from "@/lib/constants/mocks";
 import { PlusIcon } from "@heroicons/react/24/solid";
-// import prisma from "@/lib/prisma";
+import { getCurrentUserEmail } from "@/../auth";
+import {
+  getMyGiftsAddedByMe,
+  getOtherPeoplesGiftsAddedByMe,
+} from "@/lib/queries/gift";
 
-export default function Home() {
-  // const othersGifts = await prisma.gift.findMany({
-  //   where: { ownedById: { not: "Arnaud" } },
-  //   include: { ownedBy: true },
-  // });
-  // console.log("othersGifts", othersGifts);
-  // TODO get personnal items, exclude items added by other users, orderBy name
+export default async function Home() {
+  // TODO Add suspense + skeleton ?
+  const currentUser = await getCurrentUserEmail();
+
+  const [myGifts, otherPeoplesGifts] = await Promise.all([
+    getMyGiftsAddedByMe(),
+    getOtherPeoplesGiftsAddedByMe(),
+  ]);
 
   return (
     <div className="relative h-full">
       <div className="flex flex-1 flex-col gap-4 pb-[5.5rem] pt-4">
         <List
           isPersonnal
-          items={personnalItems}
+          gifts={myGifts}
           target="moi"
-          currentUser="Arnaud"
+          currentUser={currentUser}
           emptyLabel='Ajoute ton premier cadeau avec le bouton "+"'
         />
 
         <List
           isPersonnal
-          items={otherPersonnalItems}
+          gifts={otherPeoplesGifts}
           target="les autres"
-          currentUser="Arnaud"
+          currentUser={currentUser}
           emptyLabel="Tu peux aussi ajouter des cadeaux pour les autres."
         />
       </div>

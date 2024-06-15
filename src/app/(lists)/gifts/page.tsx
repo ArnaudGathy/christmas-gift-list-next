@@ -1,14 +1,17 @@
 import List from "@/components/list/List";
-import { items } from "@/lib/constants/mocks";
+import { getMySelectedGifts } from "@/lib/queries/gift";
+import { getCurrentUserEmail } from "@/../auth";
 
-export default function Home() {
-  // TODO get list of item selectedBy current user, orderBy name
+export default async function Home() {
+  const currentUser = await getCurrentUserEmail();
+  const mySelectedGifts = await getMySelectedGifts();
+
   return (
     <div className="my-4 flex-1">
       <List
         forOthers
-        items={items}
-        currentUser="Arnaud"
+        gifts={mySelectedGifts}
+        currentUser={currentUser}
         target="offrir"
         emptyLabel="Tu n'as pas encore selectionné de cadeaux à offrir."
       />

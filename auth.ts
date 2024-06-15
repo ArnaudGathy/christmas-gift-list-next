@@ -17,5 +17,10 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
 
 export const getCurrentUserEmail = async () => {
   const session = await auth();
-  return session?.user.email;
+  if (!session) {
+    throw new Error(
+      "session should be defined when calling getCurrentUserEmail",
+    );
+  }
+  return session.user.email;
 };

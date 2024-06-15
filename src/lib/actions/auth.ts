@@ -1,4 +1,6 @@
 "use server";
+import "server-only";
+
 import { signIn, signOut } from "@/../auth";
 
 export async function authenticate(formData: FormData) {

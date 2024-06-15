@@ -6,20 +6,20 @@ import {
 import Image from "next/image";
 import bullet from "../../../public/bullet.svg";
 import ClaimItem from "@/components/list/ClaimItem";
-import { Item } from "@/lib/constants/types";
+import { Gift } from "@/lib/constants/types";
 
 export default function ItemLine({
   forOthers = false,
   isPersonnal = false,
   isGlobal = false,
   currentUser,
-  item: { name, addedBy, selectedBy, link, owner },
+  gift: { name, link, ownedBy, selectedBy, addedBy },
 }: {
   forOthers?: boolean;
   isPersonnal?: boolean;
   currentUser: string;
   isGlobal?: boolean;
-  item: Item;
+  gift: Gift;
 }) {
   const isSelected = isGlobal && !!selectedBy;
 
@@ -54,19 +54,20 @@ export default function ItemLine({
           )}
         </span>
         <p className="min-h-5 pl-6 text-xs text-white/60">
-          {isSelected && <>Choisi par : {selectedBy}</>}
-          {!isSelected && !isPersonnal && !forOthers && addedBy && (
-            <>Ajouté par : {addedBy}</>
-          )}
-          {(isPersonnal || forOthers) && owner !== currentUser && (
-            <>Pour : {owner}</>
+          {isSelected && <>Choisi par : {selectedBy.name}</>}
+          {!isSelected &&
+            !isPersonnal &&
+            !forOthers &&
+            addedBy.name !== ownedBy.name && <>Ajouté par : {addedBy.name}</>}
+          {(isPersonnal || forOthers) && ownedBy.email !== currentUser && (
+            <>Pour : {ownedBy.name}</>
           )}
         </p>
       </div>
       <div className="min-w-6">
         {isPersonnal ? (
           <ClaimItem id={1} isRemove />
-        ) : selectedBy === currentUser ? (
+        ) : selectedBy?.email === currentUser ? (
           <ClaimItem id={1} isCancel />
         ) : !selectedBy && !isPersonnal ? (
           <ClaimItem id={1} />

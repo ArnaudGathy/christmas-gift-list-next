@@ -1,7 +1,7 @@
 import ItemLine from "@/components/list/ItemLine";
-import { Item } from "@/lib/constants/types";
 import Highlight from "@/components/Highlight";
 import { clsx } from "clsx";
+import { Gift } from "@/lib/constants/types";
 
 export default function List({
   isPersonnal = false,
@@ -9,7 +9,7 @@ export default function List({
   forOthers = false,
   currentUser,
   target,
-  items,
+  gifts,
   emptyLabel,
 }: {
   forOthers?: boolean;
@@ -18,7 +18,7 @@ export default function List({
   isGlobal?: boolean;
   target: string;
   emptyLabel?: string;
-  items: Item[];
+  gifts: Gift[];
 }) {
   return (
     <div className="rounded-lg bg-gradient-to-r from-red-600/95 to-red-500/75 shadow-lg">
@@ -29,17 +29,17 @@ export default function List({
       </div>
       <div
         className={clsx("space-y-2 p-2", {
-          "p-4": !items.length && emptyLabel,
+          "p-4": !gifts.length && emptyLabel,
         })}
       >
-        {!!items.length
-          ? items.map((item) => (
+        {!!gifts.length
+          ? gifts.map((item) => (
               <ItemLine
                 forOthers={forOthers}
                 isPersonnal={isPersonnal}
                 isGlobal={isGlobal}
                 key={item.name}
-                item={item}
+                gift={item}
                 currentUser={currentUser}
               />
             ))

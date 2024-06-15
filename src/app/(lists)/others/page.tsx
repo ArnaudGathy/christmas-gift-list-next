@@ -1,27 +1,34 @@
 import List from "@/components/list/List";
-import { itemsByTarget } from "@/lib/constants/mocks";
 import Filters from "@/components/list/Filters";
+import { getGiftsByUsersExceptMine } from "@/lib/queries/gift";
+import { entries, sort } from "remeda";
+import { getCurrentUserEmail } from "@/../auth";
 
-export default function Home() {
-  // TODO get all lists
-  // group by user
-  // order by user
-  // order by selected or not (order by claimed at), order by added at
+type HomeProps = {
+  searchParams?: {
+    showUnclaimed?: string;
+  };
+};
 
-  // TODO list filters
-  // Only available to claim
-  // One person's list only
+export default async function Home({ searchParams }: HomeProps) {
+  const currentUser = await getCurrentUserEmail();
+  const showUnclaimed = searchParams?.showUnclaimed === "true";
+
+  const giftstByUser = await getGiftsByUsersExceptMine(showUnclaimed);
+  const giftsSortedByUserName = sort(entries(giftstByUser), (a, b) =>
+    a[0].localeCompare(b[0]),
+  );
 
   return (
     <div className="mb-4 flex flex-1 flex-col gap-4">
       <Filters />
-      {Object.entries(itemsByTarget).map(([target, items]) => (
+      {giftsSortedByUserName.map(([target, items]) => (
         <List
-          isGlobal
           key={target}
-          items={items}
+          isGlobal
+          gifts={items}
           target={target}
-          currentUser="Arnaud"
+          currentUser={currentUser}
         />
       ))}
     </div>
