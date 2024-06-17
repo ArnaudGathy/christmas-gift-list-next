@@ -1,17 +1,19 @@
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { claimGift, removeGift, unClaimGift } from "@/lib/actions/gifts";
 import { buttonAnimationClasses } from "@/components/Button";
+import { getCurrentUserEmail } from "@/../auth";
 
-export default function ClaimItem({
+export default async function ClaimItem({
   id,
   isCancel,
   isRemove,
 }: {
-  id: number;
+  id: string;
   isCancel?: boolean;
   isRemove?: boolean;
 }) {
-  const claim = claimGift.bind(null, id);
+  const currentUserEmail = await getCurrentUserEmail();
+  const claim = claimGift.bind(null, id, currentUserEmail);
   const unClaim = unClaimGift.bind(null, id);
   const remove = removeGift.bind(null, id);
 

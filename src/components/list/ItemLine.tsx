@@ -13,7 +13,7 @@ export default function ItemLine({
   isPersonnal = false,
   isGlobal = false,
   currentUser,
-  gift: { name, link, ownedBy, selectedBy, addedBy },
+  gift: { name, link, ownedBy, selectedBy, addedBy, id },
 }: {
   forOthers?: boolean;
   isPersonnal?: boolean;
@@ -66,11 +66,11 @@ export default function ItemLine({
       </div>
       <div className="min-w-6">
         {isPersonnal ? (
-          <ClaimItem id={1} isRemove />
+          <ClaimItem id={id} isRemove />
         ) : selectedBy?.email === currentUser ? (
-          <ClaimItem id={1} isCancel />
+          <ClaimItem id={id} isCancel />
         ) : !selectedBy && !isPersonnal ? (
-          <ClaimItem id={1} />
+          <ClaimItem id={id} />
         ) : null}
       </div>
     </div>

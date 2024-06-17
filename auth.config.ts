@@ -2,11 +2,18 @@ import type { NextAuthConfig } from "next-auth";
 import { routes } from "@/lib/constants/routes";
 import { getUserByEmail } from "@/lib/queries/user";
 
+export const getUser = (userEmail: string) => {
+  if (process.env.NODE_ENV === "production") {
+    return getUserByEmail(userEmail);
+  }
+  return { email: "arno.firefox@gmail.com" };
+};
+
 const isUserAuthorized = async (email?: string | null) => {
   if (!email) {
     return false;
   }
-  const user = await getUserByEmail(email);
+  const user = await getUser(email);
   return !!user;
 };
 

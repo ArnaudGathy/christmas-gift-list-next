@@ -5,10 +5,24 @@ import { routes } from "@/lib/constants/routes";
 import Input from "@/components/Input";
 import { addGift } from "@/lib/actions/gifts";
 import Highlight from "@/components/Highlight";
+import { getAllUsers } from "@/lib/queries/user";
+import { getCurrentUserEmail } from "@/../auth";
 
-export default function Add() {
+export default async function Add() {
+  const user = await getCurrentUserEmail();
+  const users = await getAllUsers();
+
+  const me = users.find(({ email }) => email === user);
+  const allUsersButMe = users.filter(({ email }) => email !== user);
+
+  if (!me) {
+    throw new Error("Couldn't find current user");
+  }
+
+  const add = addGift.bind(null, me.id);
+
   return (
-    <form action={addGift} className="flex h-full flex-1 flex-col">
+    <form action={add} className="flex h-full flex-1 flex-col">
       <Link
         href={routes.mylist.href}
         className="absolute top-0 flex items-center gap-2 text-sm font-light text-red-600"
@@ -19,18 +33,23 @@ export default function Add() {
 
       <div className="flex flex-1 flex-col justify-center gap-8">
         <div className="flex flex-col gap-2">
-          <label htmlFor="target" className="text-center text-xl">
+          <label htmlFor="ownedById" className="text-center text-xl">
             Ajouter pour <Highlight>QUI</Highlight> ?
           </label>
           <select
-            id="target"
-            name="target"
+            id="ownedById"
+            name="ownedById"
             className={`h-10 rounded-lg bg-white text-center text-black focus:border-2 focus:border-red-600 focus:outline-none`}
             required
+            defaultValue={me.id}
           >
-            <option value="1">Moi</option>
-            <option value="2">Personne 1</option>
-            <option value="3">Personne 2</option>
+            <option value={me.id}>Moi</option>
+            <option disabled>--------</option>
+            {allUsersButMe.map(({ name, id }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -59,7 +78,9 @@ export default function Add() {
         </div>
       </div>
 
-      <Button className="my-4">Ajouter</Button>
+      <Button type="submit" className="my-4">
+        Ajouter
+      </Button>
     </form>
   );
 }
