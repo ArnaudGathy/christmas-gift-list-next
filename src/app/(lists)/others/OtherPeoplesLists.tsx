@@ -17,6 +17,18 @@ export default async function OtherPeoplesLists({
     a[0].localeCompare(b[0]),
   );
 
+  if (giftsSortedByUserName.length === 0) {
+    return (
+      <List
+        isGlobal
+        gifts={[]}
+        target={"les autres"}
+        currentUser={currentUser}
+        emptyLabel="Personne n'a encore ajouté de cadeau."
+      />
+    );
+  }
+
   return giftsSortedByUserName.map(([target, items]) => (
     <List
       key={target}

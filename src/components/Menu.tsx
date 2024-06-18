@@ -25,7 +25,7 @@ export default function Menu() {
                   },
                 )}
               >
-                <Icon className="size-4" />
+                <Icon className="size-5" />
                 {tabName}
               </div>
             </Link>

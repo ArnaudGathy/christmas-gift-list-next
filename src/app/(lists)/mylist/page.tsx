@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="relative h-full">
       <Link href={routes.add.href} className="hidden md:block">
-        <Button secondary className="flex w-auto items-center gap-2">
+        <Button secondary className="flex items-center gap-2 md:w-auto">
           <PlusIcon className="size-5" /> Ajouter un cadeau
         </Button>
       </Link>
