@@ -19,7 +19,10 @@ export default function Home() {
         </Suspense>
       </div>
 
-      <Link href={routes.add.href} className="fixed bottom-[84px] right-4">
+      <Link
+        href={routes.add.href}
+        className="fixed bottom-[84px] right-4 md:right-[calc(50%-400px+2rem)]"
+      >
         <Button secondary round>
           <PlusIcon className="size-8" />
         </Button>

@@ -9,7 +9,7 @@ export default function TabBar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex w-full justify-around gap-4 bg-black/50 p-2">
+    <div className="flex w-full justify-around gap-4 bg-black/50 p-2 md:hidden">
       {menuItems.map(({ tabName, href, icon: Icon }) =>
         Icon && tabName ? (
           <Link href={href} key={href}>

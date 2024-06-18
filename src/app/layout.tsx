@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${inter.className} relative m-0 bg-green-100 p-0 text-white md:flex md:justify-center`}
+        className={`${inter.className} relative m-0 bg-green-100 p-0 text-white`}
       >
         <Image
           className="z-[-1]"
@@ -33,7 +33,7 @@ export default function RootLayout({
             objectFit: "cover",
           }}
         />
-        <main className="flex h-dvh max-w-[800px] flex-1 flex-col">
+        <main className="flex h-dvh flex-1 flex-col md:mx-auto md:max-w-[800px]">
           {children}
         </main>
         <ToastContainer

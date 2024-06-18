@@ -9,7 +9,7 @@ export default function PageHeading() {
   return (
     <div
       className={`
-       flex items-center justify-between p-4`}
+       flex items-center justify-between p-4 md:mt-6`}
     >
       <div className="flex gap-2">
         <Image src={snowflake} height={24} width={24} alt="Flocon de neige" />

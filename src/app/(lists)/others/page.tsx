@@ -15,7 +15,15 @@ export default function Home({ searchParams }: HomeProps) {
       <Suspense fallback={<div className="min-h-[28px]"></div>}>
         <Filters />
       </Suspense>
-      <Suspense fallback={<ListSkeleton />}>
+      <Suspense
+        fallback={
+          <div className="flex flex-col gap-4">
+            <ListSkeleton />
+            <ListSkeleton />
+            <ListSkeleton />
+          </div>
+        }
+      >
         <OtherPeoplesLists
           showUnclaimed={searchParams?.showUnclaimed === "true"}
         />

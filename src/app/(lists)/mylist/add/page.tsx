@@ -22,10 +22,10 @@ export default async function Add() {
   const add = addGift.bind(null, me.id);
 
   return (
-    <form action={add} className="flex h-full flex-1 flex-col">
+    <form action={add} className="flex h-full flex-1 flex-col md:items-center">
       <Link
         href={routes.mylist.href}
-        className="absolute top-0 flex items-center gap-2 text-sm font-light text-red-600"
+        className="absolute top-0 flex items-center gap-2 text-sm font-light text-red-600 md:left-4"
       >
         <ArrowLeftIcon className="size-5" />
         <span>Retour à ma liste</span>
@@ -78,7 +78,7 @@ export default async function Add() {
         </div>
       </div>
 
-      <Button type="submit" className="my-4">
+      <Button type="submit" className="my-4 md:w-96">
         Ajouter
       </Button>
     </form>
