@@ -19,7 +19,7 @@ export default function Button({
     <button
       className={clsx(
         `${className ?? ""} ${buttonAnimationClasses}
-        w-full p-2 text-center text-sm`,
+        w-full p-2 text-center text-sm md:max-w-96`,
         {
           "bg-white text-green-700": secondary,
           "bg-red-600 disabled:bg-neutral-400": !secondary,

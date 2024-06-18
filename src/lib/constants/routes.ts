@@ -2,13 +2,14 @@ import {
   GiftIcon,
   ListBulletIcon,
   ShoppingCartIcon,
+  PlusIcon,
 } from "@heroicons/react/24/solid";
 
 type Route = {
   heading: string;
-  tabName?: string;
+  tabName: string;
   href: string;
-  icon?: React.ElementType;
+  icon: React.ElementType;
 };
 
 export const routes: Record<string, Route> = {
@@ -21,6 +22,8 @@ export const routes: Record<string, Route> = {
   add: {
     heading: "Ajouter un cadeau",
     href: "/mylist/add",
+    tabName: "Ajouter",
+    icon: PlusIcon,
   },
   others: {
     heading: "Listes des autres",

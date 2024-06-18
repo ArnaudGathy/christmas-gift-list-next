@@ -31,7 +31,7 @@ export default async function Add() {
         <span>Retour à ma liste</span>
       </Link>
 
-      <div className="flex flex-1 flex-col justify-center gap-8">
+      <div className="flex flex-1 flex-col justify-center gap-8 md:mt-7 md:flex-none md:justify-normal">
         <div className="flex flex-col gap-2">
           <label htmlFor="ownedById" className="text-center text-xl">
             Ajouter pour <Highlight>QUI</Highlight> ?
@@ -78,7 +78,7 @@ export default async function Add() {
         </div>
       </div>
 
-      <Button type="submit" className="my-4 md:w-96">
+      <Button type="submit" className="my-4 md:mt-16 md:w-96">
         Ajouter
       </Button>
     </form>
