@@ -1,7 +1,7 @@
 import Filters from "@/components/list/Filters";
 import { Suspense } from "react";
 import OtherPeoplesLists from "@/app/(lists)/others/OtherPeoplesLists";
-import ListSkeleton from "@/components/list/ListSkeleton";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 type HomeProps = {
   searchParams?: {
@@ -15,15 +15,7 @@ export default function Home({ searchParams }: HomeProps) {
       <Suspense fallback={<div className="min-h-[28px]"></div>}>
         <Filters />
       </Suspense>
-      <Suspense
-        fallback={
-          <div className="flex flex-col gap-4">
-            <ListSkeleton />
-            <ListSkeleton />
-            <ListSkeleton />
-          </div>
-        }
-      >
+      <Suspense fallback={<LoadingSpinner />}>
         <OtherPeoplesLists
           showUnclaimed={searchParams?.showUnclaimed === "true"}
         />

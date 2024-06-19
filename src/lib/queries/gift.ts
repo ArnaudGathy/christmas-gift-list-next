@@ -6,7 +6,6 @@ import { groupBy } from "remeda";
 import { unstable_noStore as noStore } from "next/cache";
 
 export const getMyGiftsAddedByMe = async () => {
-  noStore();
   try {
     const currentUser = await getCurrentUserEmail();
 
@@ -25,7 +24,6 @@ export const getMyGiftsAddedByMe = async () => {
 };
 
 export const getOtherPeoplesGiftsAddedByMe = async () => {
-  noStore();
   try {
     const currentUser = await getCurrentUserEmail();
 
@@ -44,7 +42,6 @@ export const getOtherPeoplesGiftsAddedByMe = async () => {
 };
 
 export const getMySelectedGifts = async () => {
-  noStore();
   try {
     const currentUser = await getCurrentUserEmail();
 

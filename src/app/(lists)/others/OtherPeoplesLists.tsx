@@ -12,8 +12,8 @@ export default async function OtherPeoplesLists({
 }: OtherPeoplesListsProps) {
   const currentUser = await getCurrentUserEmail();
 
-  const giftstByUser = await getGiftsByUsersExceptMine(showUnclaimed);
-  const giftsSortedByUserName = sort(entries(giftstByUser), (a, b) =>
+  const giftsByUser = await getGiftsByUsersExceptMine(showUnclaimed);
+  const giftsSortedByUserName = sort(entries(giftsByUser), (a, b) =>
     a[0].localeCompare(b[0]),
   );
 

@@ -4,8 +4,8 @@ import Button from "@/components/Button";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import MyListForOtherPeople from "@/app/(lists)/mylist/MyListForOtherPeople";
 import { Suspense } from "react";
-import ListSkeleton from "@/components/list/ListSkeleton";
 import MyList from "@/app/(lists)/mylist/MyList";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Home() {
   return (
@@ -17,10 +17,8 @@ export default function Home() {
       </Link>
 
       <div className="flex flex-1 flex-col gap-4 pb-[5.5rem] pt-4 md:pb-4">
-        <Suspense fallback={<ListSkeleton />}>
+        <Suspense fallback={<LoadingSpinner />}>
           <MyList />
-        </Suspense>
-        <Suspense fallback={<ListSkeleton />}>
           <MyListForOtherPeople />
         </Suspense>
       </div>
