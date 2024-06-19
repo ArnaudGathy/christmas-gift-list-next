@@ -11,7 +11,7 @@ export default function LoadingSpinner({
   ...props
 }: ISVGProps) {
   return (
-    <div className="flex items-center justify-center py-12">
+    <div className="flex items-center justify-center py-6">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
