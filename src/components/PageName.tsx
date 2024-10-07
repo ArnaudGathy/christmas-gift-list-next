@@ -13,8 +13,8 @@ export default function PageName() {
 
   return (
     <span
-      className={`${mountainsOfChristmas.className} bg-gradient-to-b from-red-700 to-red-400 bg-clip-text text-3xl 
-        font-semibold text-transparent antialiased`}
+      className={`${mountainsOfChristmas.className} text-3xl font-semibold 
+        text-red-600 antialiased`}
     >
       {currentPage?.heading ?? "On s'est perdu ?"}
     </span>

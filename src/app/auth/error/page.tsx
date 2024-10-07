@@ -10,8 +10,7 @@ export default function Error() {
       <div className="flex flex-col gap-4 rounded-lg bg-white/60 p-6 text-center">
         <h1
           className={`${mountainsOfChristmas.className}
-         bg-gradient-to-b from-red-700 to-red-500
-         bg-clip-text text-3xl font-semibold text-transparent`}
+         text-3xl font-semibold text-red-600`}
         >
           Les cadeaux du père Gathy
         </h1>

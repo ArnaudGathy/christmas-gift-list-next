@@ -14,12 +14,12 @@ export default function Highlight({
   return (
     <span
       className={clsx(
-        `${mountainsOfChristmas.className} ${className ?? ""} inline-block bg-gradient-to-b bg-clip-text
-        align-middle text-2xl font-semibold text-transparent
+        `${mountainsOfChristmas.className} ${className ?? ""} inline-block
+        align-middle text-2xl font-semibold
         `,
         {
-          "from-green-600 to-green-400": secondary,
-          "from-red-700 to-red-400": !secondary,
+          "text-green-500": secondary,
+          "ext-red-700": !secondary,
         },
       )}
     >
