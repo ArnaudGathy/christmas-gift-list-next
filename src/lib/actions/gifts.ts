@@ -82,7 +82,14 @@ export async function unClaimGift(itemId: string) {
       where: {
         id: validation.data.itemId,
       },
-      data: { selectedById: null },
+      data: {
+        selectedById: null,
+        backings: {
+          deleteMany: {
+            giftId: validation.data.itemId,
+          },
+        },
+      },
     });
   } catch (error) {
     console.error(error);
@@ -108,4 +115,72 @@ export async function removeGift(itemId: string) {
   }
 
   revalidatePath("/mylist");
+}
+
+export async function createBacking(itemId: string, currentUserEmail: string) {
+  const validation = validateItemId(itemId, "claim");
+
+  try {
+    const user = await getUserByEmail(currentUserEmail);
+    await prisma.gift.update({
+      where: {
+        id: validation.data.itemId,
+      },
+      data: {
+        selectedById: user?.id,
+        backings: {
+          create: [{ user: { connect: { id: user?.id } } }],
+        },
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    throw new Error("Database Error: Failed to create a backing.");
+  }
+
+  revalidatePath("/others");
+}
+
+export async function joinBacking(itemId: string, currentUserEmail: string) {
+  const validation = validateItemId(itemId, "back");
+
+  try {
+    const user = await getUserByEmail(currentUserEmail);
+    if (!!user) {
+      await prisma.giftBacking.create({
+        data: {
+          giftId: validation.data.itemId,
+          userId: user?.id,
+        },
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    throw new Error("Database Error: Failed to join a backing.");
+  }
+
+  revalidatePath("/others");
+}
+
+export async function leaveBacking(itemId: string, currentUserEmail: string) {
+  const validation = validateItemId(itemId, "back");
+
+  try {
+    const user = await getUserByEmail(currentUserEmail);
+    if (!!user) {
+      await prisma.giftBacking.delete({
+        where: {
+          giftId_userId: {
+            giftId: validation.data.itemId,
+            userId: user?.id,
+          },
+        },
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    throw new Error("Database Error: Failed to leave a backing.");
+  }
+
+  revalidatePath("/others");
 }

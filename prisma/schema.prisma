@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
   engineType = "library"
 }
 
@@ -10,22 +10,125 @@ datasource db {
 }
 
 model Gift {
-  id           String  @id @default(cuid())
+  id           String        @id @default(cuid())
   name         String
   link         String?
-  ownedBy      User    @relation("owner", fields: [ownedById], references: [id])
   ownedById    String
-  addedBy      User    @relation("added", fields: [addedById], references: [id])
   addedById    String
-  selectedBy   User?    @relation("selected", fields: [selectedById], references: [id])
   selectedById String?
+  addedBy      User          @relation("added", fields: [addedById], references: [id])
+  ownedBy      User          @relation("owner", fields: [ownedById], references: [id])
+  selectedBy   User?         @relation("selected", fields: [selectedById], references: [id])
+  backings     GiftBacking[]
+
+  @@index([ownedById])
+  @@index([addedById])
+  @@index([selectedById])
 }
 
 model User {
-  id            String @id @default(cuid())
+  id            String        @id @default(cuid())
   name          String
-  email         String @unique
-  ownedGifts    Gift[] @relation("owner")
-  addedGifts    Gift[] @relation("added")
-  selectedGifts Gift[] @relation("selected")
+  email         String        @unique
+  addedGifts    Gift[]        @relation("added")
+  ownedGifts    Gift[]        @relation("owner")
+  selectedGifts Gift[]        @relation("selected")
+  GiftBacking   GiftBacking[]
+}
+
+model GiftBacking {
+  giftId String
+  userId String
+  gift   Gift   @relation(fields: [giftId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@id([giftId, userId])
+  @@index([userId])
+}
+
+model Admin {
+  id          String @id @default(cuid())
+  displayName String
+  username    String @unique
+  password    String
+}
+
+model Registration {
+  id                   Int            @id @default(autoincrement())
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime?      @updatedAt
+  hasPaidRegistration  Boolean        @default(false)
+  hasPaidAccommodation Boolean        @default(false)
+  name                 String
+  email                String
+  phone                String
+  birthdate            DateTime
+  street               String
+  number               String
+  box                  String
+  country              String
+  zip                  String
+  city                 String
+  emergencyName        String
+  emergencyPhone       String
+  chapter              String
+  chapterFunction      String
+  brand                String?
+  model                String?
+  licencePlate         String?
+  travelMode           TravelModes
+  booking              BookingModes
+  willShareRoom        Boolean
+  staysWith            String?
+  languages            String?
+  tshirtsAmount        Int?
+  tshirtsSize          TShirtsSizes?
+  hasAgreedToPay       Boolean
+  hasAgreedToData      Boolean
+  hasAgreedToPicture   Boolean
+  accommodationId      Int?
+  accommodation        Accommodation? @relation("accommodation", fields: [accommodationId], references: [id])
+}
+
+model Accommodation {
+  id            Int            @id @default(autoincrement())
+  ref           String
+  link          String
+  name          String
+  beds          Int
+  available     Int
+  price1        Int
+  price2        Int
+  registrations Registration[] @relation("accommodation")
+}
+
+enum TravelModes {
+  BOAT
+  CAR
+  MOTORCYCLE
+  PLANE
+  SPACE_SHUTTLE
+  TRAIN
+}
+
+enum BookingModes {
+  YES
+  WITH_SOMEONE
+  NO
+}
+
+enum TShirtsSizes {
+  S
+  M
+  L
+  XL
+  TwoXL
+  ThreeXL
+  FourXL
+  FiveXL
+  WomenS
+  WomenM
+  WomenL
+  WomenXL
+  WomenTwoXL
 }

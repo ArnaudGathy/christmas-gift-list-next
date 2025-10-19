@@ -14,7 +14,18 @@ export const getMyGiftsAddedByMe = async () => {
         ownedBy: { email: currentUser },
         addedBy: { email: currentUser },
       },
-      include: { ownedBy: true, addedBy: true, selectedBy: true },
+      include: {
+        ownedBy: true,
+        addedBy: true,
+        selectedBy: true,
+        backings: {
+          include: {
+            user: {
+              select: { id: true, name: true, email: true },
+            },
+          },
+        },
+      },
       orderBy: { name: "asc" },
     });
   } catch (error) {
@@ -32,7 +43,18 @@ export const getOtherPeoplesGiftsAddedByMe = async () => {
         ownedBy: { email: { not: currentUser } },
         addedBy: { email: currentUser },
       },
-      include: { ownedBy: true, addedBy: true, selectedBy: true },
+      include: {
+        ownedBy: true,
+        addedBy: true,
+        selectedBy: true,
+        backings: {
+          include: {
+            user: {
+              select: { id: true, name: true, email: true },
+            },
+          },
+        },
+      },
       orderBy: { name: "asc" },
     });
   } catch (error) {
@@ -46,8 +68,24 @@ export const getMySelectedGifts = async () => {
     const currentUser = await getCurrentUserEmail();
 
     return prisma.gift.findMany({
-      where: { selectedBy: { email: currentUser } },
-      include: { ownedBy: true, addedBy: true, selectedBy: true },
+      where: {
+        OR: [
+          { selectedBy: { email: currentUser } },
+          { backings: { some: { user: { email: currentUser } } } },
+        ],
+      },
+      include: {
+        ownedBy: true,
+        addedBy: true,
+        selectedBy: true,
+        backings: {
+          include: {
+            user: {
+              select: { id: true, name: true, email: true },
+            },
+          },
+        },
+      },
       orderBy: { name: "asc" },
     });
   } catch (error) {
@@ -64,7 +102,18 @@ export const getGiftsByUsersExceptMine = async (unclaimedOnly: boolean) => {
 
     const gifts = await prisma.gift.findMany({
       where: { ownedBy: { email: { not: currentUser } }, ...selectByClause },
-      include: { ownedBy: true, addedBy: true, selectedBy: true },
+      include: {
+        ownedBy: true,
+        addedBy: true,
+        selectedBy: true,
+        backings: {
+          include: {
+            user: {
+              select: { id: true, name: true, email: true },
+            },
+          },
+        },
+      },
       orderBy: [
         { selectedById: { sort: "asc", nulls: "first" } },
         { name: "asc" },

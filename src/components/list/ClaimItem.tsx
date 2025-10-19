@@ -1,5 +1,17 @@
-import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { claimGift, removeGift, unClaimGift } from "@/lib/actions/gifts";
+import {
+  ShoppingCartIcon,
+  UserPlusIcon,
+  UsersIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
+import {
+  claimGift,
+  createBacking,
+  joinBacking,
+  leaveBacking,
+  removeGift,
+  unClaimGift,
+} from "@/lib/actions/gifts";
 import { buttonAnimationClasses } from "@/components/Button";
 import { getCurrentUserEmail } from "@/../auth";
 
@@ -7,17 +19,31 @@ export default async function ClaimItem({
   id,
   isCancel,
   isRemove,
+  isJoinBacking,
+  isLeaveBacking,
 }: {
   id: string;
   isCancel?: boolean;
   isRemove?: boolean;
+  isJoinBacking?: boolean;
+  isLeaveBacking?: boolean;
 }) {
   const currentUserEmail = await getCurrentUserEmail();
   const claim = claimGift.bind(null, id, currentUserEmail);
   const unClaim = unClaimGift.bind(null, id);
   const remove = removeGift.bind(null, id);
 
+  const createBack = createBacking.bind(null, id, currentUserEmail);
+  const joinBack = joinBacking.bind(null, id, currentUserEmail);
+  const leaveBack = leaveBacking.bind(null, id, currentUserEmail);
+
   const getAction = () => {
+    if (isJoinBacking) {
+      return joinBack;
+    }
+    if (isLeaveBacking) {
+      return leaveBack;
+    }
     if (isCancel) {
       return unClaim;
     }
@@ -27,21 +53,40 @@ export default async function ClaimItem({
     return claim;
   };
 
-  // todo toast ?
+  const getIcon = () => {
+    if (isCancel || isRemove || isLeaveBacking) {
+      return <XMarkIcon className="size-6" />;
+    }
+
+    if (isJoinBacking) {
+      return <UserPlusIcon className="size-6" />;
+    }
+
+    return <ShoppingCartIcon className="size-6" />;
+  };
 
   return (
-    <form action={getAction()}>
-      <button
-        name="claim"
-        type="submit"
-        className={`${buttonAnimationClasses} flex h-full w-full items-start`}
-      >
-        {isCancel || isRemove ? (
-          <XMarkIcon className="size-6" />
-        ) : (
-          <ShoppingCartIcon className="size-6" />
-        )}
-      </button>
-    </form>
+    <div className="flex gap-2">
+      {!isJoinBacking && !isLeaveBacking && !isCancel && !isRemove && (
+        <form action={createBack}>
+          <button
+            name="claim"
+            type="submit"
+            className={`${buttonAnimationClasses} flex h-full w-full items-start`}
+          >
+            <UsersIcon className="size-6" />
+          </button>
+        </form>
+      )}
+      <form action={getAction()}>
+        <button
+          name="claim"
+          type="submit"
+          className={`${buttonAnimationClasses} flex h-full w-full items-start`}
+        >
+          {getIcon()}
+        </button>
+      </form>
+    </div>
   );
 }
