@@ -97,7 +97,7 @@ export default function ItemLine({
           {(isPersonnal || forOthers) && ownedBy.email !== currentUser && (
             <>Pour : {ownedBy.name}</>
           )}
-          {hasBacking && (
+          {hasBacking && !isPersonnal && (
             <span className="flex gap-1">
               Participants :
               {backings.map((backing, index) => {
