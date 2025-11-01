@@ -14,6 +14,7 @@ import {
 } from "@/lib/actions/gifts";
 import { buttonAnimationClasses } from "@/components/Button";
 import { getCurrentUserEmail } from "@/../auth";
+import { clsx } from "clsx";
 
 export default async function ClaimItem({
   id,
@@ -28,6 +29,8 @@ export default async function ClaimItem({
   isJoinBacking?: boolean;
   isLeaveBacking?: boolean;
 }) {
+  const displayBackingIcon =
+    !isJoinBacking && !isLeaveBacking && !isCancel && !isRemove;
   const currentUserEmail = await getCurrentUserEmail();
   const claim = claimGift.bind(null, id, currentUserEmail);
   const unClaim = unClaimGift.bind(null, id);
@@ -66,8 +69,10 @@ export default async function ClaimItem({
   };
 
   return (
-    <div className="flex gap-2">
-      {!isJoinBacking && !isLeaveBacking && !isCancel && !isRemove && (
+    <div
+      className={clsx("flex min-w-6 gap-2", { "min-w-14": displayBackingIcon })}
+    >
+      {displayBackingIcon && (
         <form action={createBack}>
           <button
             name="claim"

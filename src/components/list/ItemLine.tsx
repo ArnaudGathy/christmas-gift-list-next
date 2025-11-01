@@ -120,7 +120,7 @@ export default function ItemLine({
           )}
         </p>
       </div>
-      <div className="min-w-6">{renderClaimItem()}</div>
+      {renderClaimItem()}
     </div>
   );
 }
