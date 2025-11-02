@@ -2,6 +2,9 @@
   "name": "christmas-gift-list-next",
   "version": "0.1.0",
   "private": true,
+	"engines": {
+		"npm": "10"
+	},
   "scripts": {
     "prebuild": "npm run prisma:generate",
     "build": "next build",
