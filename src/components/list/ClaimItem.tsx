@@ -1,7 +1,6 @@
 import {
   ShoppingCartIcon,
   UserPlusIcon,
-  UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import {
@@ -12,9 +11,10 @@ import {
   removeGift,
   unClaimGift,
 } from "@/lib/actions/gifts";
-import { buttonAnimationClasses } from "@/components/Button";
 import { getCurrentUserEmail } from "@/../auth";
 import { clsx } from "clsx";
+import { CreateBackingButton } from "@/components/list/CreateBackingButton";
+import { ClaimButton } from "@/components/list/ClaimButton";
 
 export default async function ClaimItem({
   id,
@@ -74,23 +74,11 @@ export default async function ClaimItem({
     >
       {displayBackingIcon && (
         <form action={createBack}>
-          <button
-            name="claim"
-            type="submit"
-            className={`${buttonAnimationClasses} flex h-full w-full items-start`}
-          >
-            <UsersIcon className="size-6" />
-          </button>
+          <CreateBackingButton />
         </form>
       )}
       <form action={getAction()}>
-        <button
-          name="claim"
-          type="submit"
-          className={`${buttonAnimationClasses} flex h-full w-full items-start`}
-        >
-          {getIcon()}
-        </button>
+        <ClaimButton>{getIcon()}</ClaimButton>
       </form>
     </div>
   );

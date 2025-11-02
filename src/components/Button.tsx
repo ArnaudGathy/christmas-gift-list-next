@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 
-export const buttonAnimationClasses = "active:scale-90 transition-transform";
+export const buttonAnimationClasses =
+  "enabled:active:scale-90 transition-transform";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   round?: boolean;
