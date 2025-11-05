@@ -54,7 +54,7 @@ export default function ItemLine({
 
   return (
     <div className="flex justify-between gap-2">
-      <div>
+      <div className="flex-1">
         <span
           className={clsx("flex gap-1 font-medium", {
             "text-green-500 line-through": isSelected,
